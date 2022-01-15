@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users, skip: :all, controllers: {
+                                  registrations: 'registrations',
+                                  sessions:      'sessions'
+                                 }
+
+
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+      resources :users, only: %i[index]
+
+      # Devise on V1 of the API
+      devise_scope :user do
+        post   '/login'            => 'sessions#create',       as: :user_session
+        delete '/logout'           => 'sessions#destroy',      as: :destroy_user_session
+        get    '/me'               => 'sessions#my_user',      as: :my_user
+        put    '/change_password'  => 'users#update_password', as: :update_password
+      end
+    end
+  end
 end
