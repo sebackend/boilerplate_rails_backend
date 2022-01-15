@@ -3,7 +3,7 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user) # rubocop:disable Metrics/MethodLength
+  def initialize(user)
     # Define abilities for the passed in user here. For example:
     alias_action :create, :read, :update, :destroy, to: :crud
     user ||= User.new # guest user (not logged in)
@@ -27,6 +27,7 @@ class Ability
       #   can %i[read ranking summary], KpiUser
       # end
     else
+      can :show, User
       # can %i[read contact], Page, active: true
       # can :read, Setting, active: true
       # can :read, Slide, active: true

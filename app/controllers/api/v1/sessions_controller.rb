@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class SessionsController < ::Devise::SessionsController
@@ -14,8 +16,8 @@ module Api
 
       def my_user
         render json: {
-          'logged_in': current_user.present?,
-          'user_info': current_user.present? ? UserSerializer.new(current_user) : nil
+          logged_in: current_user.present?,
+          user_info: current_user.present? ? UserSerializer.new(current_user) : nil
         }
       end
 

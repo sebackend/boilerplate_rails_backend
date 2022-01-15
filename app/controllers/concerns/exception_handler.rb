@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ExceptionHandler
   # Observación: mientras más abajo la definición, mayor es la prioridad (anti-intuitivo).
 
@@ -6,8 +8,8 @@ module ExceptionHandler
   included do
     rescue_from StandardError do |e|
       status = :internal_server_error
-      status = :unauthorized if e.class == CanCan::AccessDenied
-      puts e.backtrace unless e.class == CanCan::AccessDenied
+      status = :unauthorized if e.instance_of?(CanCan::AccessDenied)
+      puts e.backtrace unless e.instance_of?(CanCan::AccessDenied)
       json_response({ message: e.message, backtrace: e.backtrace[0..10] }, status)
     end
 
