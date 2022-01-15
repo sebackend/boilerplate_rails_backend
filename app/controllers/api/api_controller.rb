@@ -1,9 +1,9 @@
 module Api
   class ApiController < ApplicationController
-    include ActionController::MimeResponds
     include Response
     include ExceptionHandler
 
+    load_and_authorize_resource unless: :invalid_controller?
     respond_to :json
 
     private

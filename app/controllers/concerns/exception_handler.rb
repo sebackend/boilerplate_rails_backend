@@ -6,6 +6,8 @@ module ExceptionHandler
   included do
     rescue_from StandardError do |e|
       status = :internal_server_error
+      status = :unauthorized if e.class == CanCan::AccessDenied
+      puts e.backtrace unless e.class == CanCan::AccessDenied
       json_response({ message: e.message, backtrace: e.backtrace[0..10] }, status)
     end
 
