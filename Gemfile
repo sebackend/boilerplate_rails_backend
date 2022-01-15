@@ -17,9 +17,9 @@ gem 'pg',                 '~> 1.1'
 gem 'puma',               '~> 5.0'
 gem 'rack-cors',          '1.1.1'
 gem 'rails',              '6.1.4.4'
+gem 'faker',              '2.19.0'
 
 group :development, :test do
-  gem 'faker',              '2.19.0'
   gem 'pry-byebug',         '3.9.0'
   gem 'rubocop',            '1.23.0'
   gem 'rubocop-rspec',      '2.6.0'

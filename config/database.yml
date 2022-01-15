@@ -13,5 +13,5 @@ test:
 production:
   <<: *default
   database: boilerplate_rails_backend_production
-  username: boilerplate_rails_backend
-  password: <%= ENV['BOILERPLATE_RAILS_BACKEND_DATABASE_PASSWORD'] %>
+  pool: 5
+  timeout: 5000
