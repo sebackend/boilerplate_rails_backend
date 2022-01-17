@@ -5,12 +5,17 @@ module Api
     class RegistrationsController < ::Devise::RegistrationsController
       include Response
       include ExceptionHandler
+      before_action :configure_sign_up_params, only: [:create]
+      respond_to :json
 
       def create
-        build_resource(sign_up_params)
+        super { |resource| @resource = resource }
+      end
 
-        resource.save!
-        render_resource(resource)
+      protected
+
+      def configure_sign_up_params
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :first_name, :last_name, :password])
       end
     end
   end
