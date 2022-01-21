@@ -15,7 +15,7 @@ module Api
       protected
 
       def configure_sign_up_params
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :first_name, :last_name, :password])
+        devise_parameter_sanitizer.permit(:sign_up, keys: %i[email first_name last_name password])
       end
     end
   end

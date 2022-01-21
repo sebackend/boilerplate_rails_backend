@@ -12,12 +12,12 @@ gem 'cancancan', '3.3.0'
 gem 'devise',             '4.8.1'
 gem 'devise-jwt',         '0.9.0'
 gem 'dotenv-rails',       '2.7.6'
+gem 'faker',              '2.19.0'
 gem 'jsonapi-serializer', '2.2.0'
 gem 'pg',                 '~> 1.1'
 gem 'puma',               '~> 5.0'
 gem 'rack-cors',          '1.1.1'
 gem 'rails',              '6.1.4.4'
-gem 'faker',              '2.19.0'
 
 group :development, :test do
   gem 'pry-byebug',         '3.9.0'

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
-      resources :users, only: %i[index]
+      resources :users, only: %i[index show]
 
       # Devise on V1 of the API
       devise_scope :user do

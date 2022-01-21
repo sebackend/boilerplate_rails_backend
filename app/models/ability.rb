@@ -8,7 +8,7 @@ class Ability
     alias_action :create, :read, :update, :destroy, to: :crud
     user ||= User.new # guest user (not logged in)
     if user.persisted?
-      can :index, User
+      can :read, User
       # if user.admin?
       #   can :manage, :all
       # elsif user.basic?
@@ -26,11 +26,6 @@ class Ability
       #   can %i[read], Transaction
       #   can %i[read ranking summary], KpiUser
       # end
-    else
-      can :show, User
-      # can %i[read contact], Page, active: true
-      # can :read, Setting, active: true
-      # can :read, Slide, active: true
     end
   end
 end
